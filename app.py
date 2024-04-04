@@ -10,7 +10,7 @@ genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
 def get_gemini_resp(inpt_prompt,img):
     model = genai.GenerativeModel('gemini-pro-vision')
-    resp = model.generate_content([inpt_prompt,img])
+    resp = model.generate_content([inpt_prompt,img[0]])
     return resp.text
 
 def inpt_img(uploaded_image):
@@ -27,7 +27,7 @@ def inpt_img(uploaded_image):
 
 def main():
     # Title
-    st.title('Image Viewer')
+    st.title('Food Info using Image')
 
     #Upload an image
     uploaded_image = st.file_uploader("Upload an image", type=["jpg", "jpeg", "png", "webp"])
